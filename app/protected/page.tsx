@@ -1,7 +1,6 @@
 import FetchDataSteps from "@/components/tutorial/fetch-data-steps";
 import { createClient } from "@/utils/supabase/server";
 import { InfoIcon } from "lucide-react";
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { redirect } from "next/navigation";
 import Messages from "@/components/messages";
 import SendMessage from "@/components/send-message";
@@ -31,6 +30,7 @@ export default async function ProtectedPage() {
 
       <Messages user={user} messages={messages} />
       <SendMessage user={user} />
+
       {/* <div className="flex flex-col gap-2 items-start">
         <h2 className="font-bold text-2xl mb-4">Your user details</h2>
         <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">

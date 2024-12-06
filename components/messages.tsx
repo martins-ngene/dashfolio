@@ -42,10 +42,10 @@ export default function Messages({ user, messages }: any) {
               className="border-[0.5px] border-[#aaa] w-full my-[0.5rem] rounded p-2"
             >
               <div className="w-full flex items-center justify-between">
-                <h2 className="my-1 font-bold text-[1rem]">
+                <h2 className="my-1 font-bold text-[0.8rem] md:text-[1rem]">
                   {`@` + `${message.username}`}
                 </h2>
-                <strong>
+                <strong className="text-[0.8rem]">
                   {time} {formattedDate}
                 </strong>
               </div>
