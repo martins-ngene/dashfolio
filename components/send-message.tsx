@@ -3,8 +3,13 @@ import { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
-const SendMessage = () => {
+const SendMessage = ({ user }: any) => {
   const [newMessage, setNewMessage] = useState("");
+
+  const email = user.email;
+  const trimmedEmail = email.split("@")[0];
+
+  // console.log(trimmedEmail);
 
   const supabase = createClient();
 
@@ -12,12 +17,12 @@ const SendMessage = () => {
     setNewMessage(e.target.value);
   };
 
-  const addNewMessage = async (e: any, message: string) => {
+  const addNewMessage = async (e: any, message: string, username: string) => {
     e.preventDefault();
 
     const { data, error } = await supabase
       .from("messages")
-      .insert([{ message: message }]);
+      .insert([{ message: message, username: username }]);
 
     if (error) {
       console.error("Error inserting data:", error);
@@ -33,7 +38,7 @@ const SendMessage = () => {
 
   return (
     <form
-      onSubmit={(e) => addNewMessage(e, newMessage)}
+      onSubmit={(e) => addNewMessage(e, newMessage, trimmedEmail)}
       className="h-10 w-full flex items-center justify-between"
     >
       <input
@@ -43,7 +48,7 @@ const SendMessage = () => {
         value={newMessage}
         onChange={(e) => handleInput(e)}
         placeholder="Jane Smith"
-        className="block w-[80%] rounded-full bg-white px-4 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+        className="block w-[80%] rounded bg-white px-4 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
       />
       <button
         type="submit"

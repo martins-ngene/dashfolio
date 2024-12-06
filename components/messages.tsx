@@ -1,9 +1,10 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
-export default function Messages({ messages }: any) {
+export default function Messages({ user, messages }: any) {
   const [data, setData] = useState(messages);
   const supabase = createClient();
 
@@ -33,16 +34,20 @@ export default function Messages({ messages }: any) {
     <>
       {data &&
         data.map((message: any) => {
+          const formattedDate = dayjs(message.created_at).format("MM-DD-YYYY");
+          const time = dayjs(message.created_at).format("h:mm A");
           return (
             <div
               key={message.message_id}
-              className="border-[0.5px] border-[#aaa] w-full my-[1rem] rounded p-2"
+              className="border-[0.5px] border-[#aaa] w-full my-[0.5rem] rounded p-2"
             >
-              <div>
-                {/* <h2 className="my-1 font-bold text-[1rem]">
-                  {`@` + `${user.email}`}
-                </h2> */}
-                <strong>{message.created_at}</strong>
+              <div className="w-full flex items-center justify-between">
+                <h2 className="my-1 font-bold text-[1rem]">
+                  {`@` + `${message.username}`}
+                </h2>
+                <strong>
+                  {time} {formattedDate}
+                </strong>
               </div>
               <p>{message.message}</p>
             </div>
