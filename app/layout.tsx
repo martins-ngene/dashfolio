@@ -14,8 +14,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Chat-Base",
-  description: "The fastest way to collaborate.",
+  title: "Dashfolio",
+  description: "Everything you need to manage your online presence in one place",
 };
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
               <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                 <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-5 items-center text-[1rem] font-bold">
-                    <Link href={"/"}>Chat-Base</Link>
+                    <Link href={"/"}>Dashfolio</Link>
                   </div>
                   {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
                 </div>
