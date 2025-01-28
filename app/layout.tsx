@@ -34,7 +34,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen w-full flex flex-col items-center">
+          <main className="min-h-screen w-full">
           
               {/* Nav */}
               {getUserStatus ? <Navigation /> : <HeaderAuth />}
