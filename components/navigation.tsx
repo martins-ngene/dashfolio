@@ -8,10 +8,9 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import { signOutAction } from "@/app/actions";
 
 const mockUser = {
@@ -21,15 +20,17 @@ const mockUser = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-  { name: "Reports", href: "#", current: false },
+  { name: "Dashboard", href: "/protected#", current: true },
+  { name: "Landing", href: "/protected/landing", current: false },
+  { name: "Articles", href: "/protected/articles", current: false },
+  { name: "Projects", href: "/protected/projects", current: false },
+  { name: "About", href: "/protected/about", current: false },
+  { name: "Resources", href: "/protected/resources", current: false },
+  { name: "Speakings", href: "/protected/speakings", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#", action: undefined },
-  { name: "Settings", href: "#", action: undefined },
+  { name: "Profile", href: "/protected/profile", action: undefined },
+  { name: "Settings", href: "/protected/settings", action: undefined },
   { name: "Sign out", href: "#", action: signOutAction },
 ];
 
@@ -90,7 +91,7 @@ export default async function Navigation() {
                   </div>
                   <MenuItems
                     transition
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                    className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                   >
                     {userNavigation.map((item) => (
                       <MenuItem key={item.name}>

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Articles from "@/components/articles";
 import AddForm from "@/components/add-form";
 
-export default async function UserDashboard() {
+export default async function Dashboard() {
   const supabase = await createClient();
 
   const {
